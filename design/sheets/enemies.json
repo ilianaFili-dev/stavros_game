@@ -1,0 +1,28 @@
+{
+  "sheet": "enemies",
+  "description": "Sekiro enemies the round director draws from. npc_param_id and chr_id must be read from the player's NpcParam (regulation) and chr folder.",
+  "columns": {
+    "id": {"type": "id"},
+    "milestone": {"type": "enum", "values": ["M0", "M1", "M2", "M3"]},
+    "name": {"type": "string"},
+    "tier": {"type": "int"},
+    "boss": {"type": "bool"},
+    "chr_id": {"type": "string"},
+    "npc_param_id": {"type": "int"},
+    "think_param_id": {"type": "int"}
+  },
+  "rows": [
+    {"id": "ashina_soldier_sword", "milestone": "M1", "name": "Ashina Soldier (sword)", "tier": 1, "boss": false,
+     "chr_id": null, "npc_param_id": null, "think_param_id": null},
+    {"id": "ashina_soldier_spear", "milestone": "M1", "name": "Ashina Soldier (spear)", "tier": 1, "boss": false,
+     "chr_id": null, "npc_param_id": null, "think_param_id": null},
+    {"id": "ashina_elite", "milestone": "M1", "name": "Ashina Elite", "tier": 2, "boss": false,
+     "chr_id": null, "npc_param_id": null, "think_param_id": null},
+    {"id": "ashina_samurai", "milestone": "M1", "name": "Ashina Samurai General", "tier": 3, "boss": false,
+     "chr_id": null, "npc_param_id": null, "think_param_id": null},
+    {"id": "general_naomori", "milestone": "M1", "name": "General Naomori Kawarada", "tier": 2, "boss": true,
+     "chr_id": null, "npc_param_id": null, "think_param_id": null},
+    {"id": "chained_ogre", "milestone": "M1", "name": "Chained Ogre", "tier": 3, "boss": true,
+     "chr_id": null, "npc_param_id": null, "think_param_id": null}
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "sheet": "rounds",
+  "description": "Endless escalation, after Clone Drone's arena pacing: brackets of rounds, each with an enemy count and the enemy tiers it draws from. The last bracket repeats forever, growing by count_growth per round.",
+  "columns": {
+    "id": {"type": "id"},
+    "milestone": {"type": "enum", "values": ["M0", "M1", "M2", "M3"]},
+    "from_round": {"type": "int"},
+    "to_round": {"type": "int", "optional": true},
+    "enemy_count": {"type": "int"},
+    "count_growth": {"type": "number"},
+    "tiers": {"type": "int_list"},
+    "boss_every": {"type": "int"},
+    "cd_pacing_source": {"type": "string"},
+    "start_line": {"type": "ref", "ref": "sounds.id"}
+  },
+  "rows": [
+    {"id": "warmup", "milestone": "M1", "from_round": 1, "to_round": 2, "enemy_count": 2, "count_growth": 0,
+     "tiers": [1], "boss_every": 0, "cd_pacing_source": null, "start_line": "round_start",
+     "_source": "cd_pacing_source: where Clone Drone's own arena tier progression lives in its data (read in M1 recon)."},
+    {"id": "rising", "milestone": "M1", "from_round": 3, "to_round": 9, "enemy_count": 3, "count_growth": 0.5,
+     "tiers": [1, 2], "boss_every": 5, "cd_pacing_source": null, "start_line": "round_start"},
+    {"id": "endless", "milestone": "M1", "from_round": 10, "to_round": null, "enemy_count": 5, "count_growth": 0.34,
+     "tiers": [2, 3], "boss_every": 5, "cd_pacing_source": null, "start_line": "round_start"}
+  ]
+}

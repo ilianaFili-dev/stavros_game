@@ -1,0 +1,20 @@
+{
+  "sheet": "arenas",
+  "description": "The arena area. Version 1 has one.",
+  "columns": {
+    "id": {"type": "id"},
+    "milestone": {"type": "enum", "values": ["M0", "M1", "M2", "M3"]},
+    "name": {"type": "string"},
+    "map_id": {"type": "string"},
+    "start_pos": {"type": "vec3"},
+    "radius_m": {"type": "number"},
+    "spawn_points": {"type": "vec3_list"},
+    "music": {"type": "ref", "ref": "sounds.id"}
+  },
+  "rows": [
+    {"id": "castle_gate", "milestone": "M1", "name": "Ashina Castle Gate courtyard",
+     "map_id": "m11_00_00_00", "start_pos": null, "radius_m": 30, "spawn_points": null, "music": "arena_music",
+     "_unverified": ["map_id", "radius_m"],
+     "_source": "Map id and coordinates read from the player's m11_00_00_00.msb (Gyoubu's courtyard); positions measured in game."}
+  ]
+}

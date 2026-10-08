@@ -1,0 +1,28 @@
+{
+  "sheet": "paths",
+  "description": "Files and folders the mod reads or writes on the player's PC.",
+  "columns": {
+    "id": {"type": "id"},
+    "milestone": {"type": "enum", "values": ["M0", "M1", "M2", "M3"]},
+    "root": {"type": "enum", "values": ["game", "localappdata", "steam", "clonedrone", "env"]},
+    "path": {"type": "string"},
+    "access": {"type": "enum", "values": ["read", "write"]},
+    "purpose": {"type": "string"}
+  },
+  "rows": [
+    {"id": "log_file", "milestone": "M0", "root": "localappdata", "path": "AshinaArena/logs/latest.log", "access": "write",
+     "purpose": "The mod's log; every test reads it."},
+    {"id": "steam_path_reg", "milestone": "M0", "root": "steam", "path": "HKCU\\Software\\Valve\\Steam\\SteamPath", "access": "read",
+     "purpose": "Where Steam is installed."},
+    {"id": "steam_libraries", "milestone": "M0", "root": "steam", "path": "steamapps/libraryfolders.vdf", "access": "read",
+     "purpose": "Every Steam library folder and the app ids in each."},
+    {"id": "cd_manifest", "milestone": "M0", "root": "steam", "path": "steamapps/appmanifest_597170.acf", "access": "read",
+     "purpose": "Clone Drone's installdir inside a library."},
+    {"id": "cd_override", "milestone": "M0", "root": "env", "path": "ASHINA_ARENA_CLONEDRONE_DIR", "access": "read",
+     "purpose": "Lets a non-Steam copy point at its folder."},
+    {"id": "cd_data", "milestone": "M3", "root": "clonedrone", "path": "Clone Drone in the Danger Zone_Data", "access": "read",
+     "purpose": "Clone Drone's Unity data (assets, resources, audio).", "_unverified": ["path"]},
+    {"id": "high_score_file", "milestone": "M1", "root": "localappdata", "path": "AshinaArena/highscore.json", "access": "write",
+     "purpose": "Best round reached."}
+  ]
+}

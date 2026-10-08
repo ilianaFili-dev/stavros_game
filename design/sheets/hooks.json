@@ -1,0 +1,36 @@
+{
+  "sheet": "hooks",
+  "description": "Every place the mod hooks or calls into sekiro.exe. Addresses come from signature scans on the player's exe; signatures and offsets must be read from the real exe (version 1.06) before they count as verified.",
+  "columns": {
+    "id": {"type": "id"},
+    "milestone": {"type": "enum", "values": ["M0", "M1", "M2", "M3"]},
+    "kind": {"type": "enum", "values": ["detour", "call", "read", "vtable"]},
+    "target": {"type": "string"},
+    "signature": {"type": "string"},
+    "purpose": {"type": "string"}
+  },
+  "rows": [
+    {"id": "title_menu_draw", "milestone": "M1", "kind": "detour", "target": "title menu update (CSMenuMan title state)",
+     "signature": null, "purpose": "Show and handle the 'Arena' entry.", "_unverified": ["target"],
+     "_source": "Read from sekiro.exe 1.06 in Ghidra; the title state machine sits under the menu manager singleton."},
+    {"id": "load_game", "milestone": "M1", "kind": "call", "target": "load save slot / new game request",
+     "signature": null, "purpose": "Start the arena from the title screen.", "_unverified": ["target"]},
+    {"id": "player_ins", "milestone": "M1", "kind": "read", "target": "WorldChrMan → PlayerIns",
+     "signature": null, "purpose": "Wolf's position, HP and state.", "_unverified": ["target"],
+     "_source": "WorldChrMan pointer is the base used by public Sekiro cheat tables; confirm by scan."},
+    {"id": "warp", "milestone": "M1", "kind": "call", "target": "warp to map position (bonfire/idol warp request)",
+     "signature": null, "purpose": "Put Wolf at the arena start and back inside bounds.", "_unverified": ["target"]},
+    {"id": "spawn_enemy", "milestone": "M1", "kind": "call", "target": "create character from NpcParam + ChrId at a position",
+     "signature": null, "purpose": "Spawn a round's enemies.", "_unverified": ["target"],
+     "_source": "Unknown whether Sekiro exposes a runtime spawn; fallback is enabling pre-placed MSB enemies via event flags."},
+    {"id": "chr_dead", "milestone": "M1", "kind": "read", "target": "ChrIns death / HP <= 0 for spawned enemies and Wolf",
+     "signature": null, "purpose": "Round clear and run over.", "_unverified": ["target"]},
+    {"id": "dxgi_present", "milestone": "M1", "kind": "vtable", "target": "IDXGISwapChain::Present (D3D11)",
+     "signature": "vtable index 8", "purpose": "Draw the overlay with Dear ImGui."},
+    {"id": "apply_speffect", "milestone": "M2", "kind": "call", "target": "apply SpEffect to ChrIns",
+     "signature": null, "purpose": "Apply an upgrade's effect to Wolf.", "_unverified": ["target"]},
+    {"id": "input_block", "milestone": "M2", "kind": "detour", "target": "DirectInput8 device GetDeviceState / XInputGetState",
+     "signature": "IDirectInputDevice8 vtable index 9", "purpose": "Keep the game from acting on keys while the upgrade picker is open.",
+     "_unverified": ["signature"], "_source": "Elden Ring reads input via GetDeviceState only (toolkit field note); confirm Sekiro does the same."}
+  ]
+}

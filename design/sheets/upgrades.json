@@ -1,0 +1,37 @@
+{
+  "sheet": "upgrades",
+  "description": "Clone Drone upgrades offered between rounds. Name and icon come from the player's Clone Drone (cd_upgrade_key names the entry in its upgrade data); the effect is what it does to Wolf in Sekiro.",
+  "columns": {
+    "id": {"type": "id"},
+    "milestone": {"type": "enum", "values": ["M0", "M1", "M2", "M3"]},
+    "cd_upgrade_key": {"type": "string"},
+    "cd_icon_asset": {"type": "string"},
+    "sekiro_effect": {"type": "string"},
+    "speffect_id": {"type": "int"},
+    "max_level": {"type": "int"},
+    "pick_line": {"type": "ref", "ref": "sounds.id"}
+  },
+  "rows": [
+    {"id": "sword_damage", "milestone": "M2", "cd_upgrade_key": "SwordUnlock", "cd_icon_asset": null,
+     "sekiro_effect": "Attack power +10% per level", "speffect_id": null, "max_level": 3, "pick_line": "upgrade_picked",
+     "_unverified": ["cd_upgrade_key"]},
+    {"id": "fire_sword", "milestone": "M2", "cd_upgrade_key": "FireSword", "cd_icon_asset": null,
+     "sekiro_effect": "Sword hits add burn buildup", "speffect_id": null, "max_level": 1, "pick_line": "upgrade_picked",
+     "_unverified": ["cd_upgrade_key"]},
+    {"id": "kick", "milestone": "M2", "cd_upgrade_key": "KickUnlock", "cd_icon_asset": null,
+     "sekiro_effect": "Posture damage +20% per level", "speffect_id": null, "max_level": 2, "pick_line": "upgrade_picked",
+     "_unverified": ["cd_upgrade_key"]},
+    {"id": "jetpack", "milestone": "M2", "cd_upgrade_key": "Jetpack", "cd_icon_asset": null,
+     "sekiro_effect": "Faster, longer step-dodge", "speffect_id": null, "max_level": 2, "pick_line": "upgrade_picked",
+     "_unverified": ["cd_upgrade_key"]},
+    {"id": "armor", "milestone": "M2", "cd_upgrade_key": "Armor", "cd_icon_asset": null,
+     "sekiro_effect": "Damage taken -10% per level", "speffect_id": null, "max_level": 3, "pick_line": "upgrade_picked",
+     "_unverified": ["cd_upgrade_key"]},
+    {"id": "energy_recharge", "milestone": "M2", "cd_upgrade_key": "EnergyRecharge", "cd_icon_asset": null,
+     "sekiro_effect": "Regain 1 Spirit Emblem every round", "speffect_id": null, "max_level": 1, "pick_line": "upgrade_picked",
+     "_unverified": ["cd_upgrade_key"]},
+    {"id": "extra_clone", "milestone": "M2", "cd_upgrade_key": "ExtraLife", "cd_icon_asset": null,
+     "sekiro_effect": "+1 Resurrection node", "speffect_id": null, "max_level": 2, "pick_line": "upgrade_picked",
+     "_unverified": ["cd_upgrade_key"]}
+  ]
+}

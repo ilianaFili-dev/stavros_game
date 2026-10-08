@@ -1,0 +1,24 @@
+{
+  "sheet": "sounds",
+  "description": "Clone Drone audio played in the arena, read from the player's Clone Drone install. cd_asset names the clip(s) in its Unity data; container and codec are what the reader must decode.",
+  "columns": {
+    "id": {"type": "id"},
+    "milestone": {"type": "enum", "values": ["M0", "M1", "M2", "M3"]},
+    "event": {"type": "enum", "values": ["round_start", "round_won", "boss_round", "upgrade_picked", "player_died", "new_high_score", "music"]},
+    "cd_asset": {"type": "string_list"},
+    "cd_container": {"type": "string"},
+    "codec": {"type": "string"},
+    "loop": {"type": "bool"},
+    "volume": {"type": "number"}
+  },
+  "rows": [
+    {"id": "round_start", "milestone": "M3", "event": "round_start", "cd_asset": null, "cd_container": null, "codec": null, "loop": false, "volume": 1.0,
+     "_source": "Commentator ('Analysis') lines announcing a new round."},
+    {"id": "round_won", "milestone": "M3", "event": "round_won", "cd_asset": null, "cd_container": null, "codec": null, "loop": false, "volume": 1.0},
+    {"id": "boss_round", "milestone": "M3", "event": "boss_round", "cd_asset": null, "cd_container": null, "codec": null, "loop": false, "volume": 1.0},
+    {"id": "upgrade_picked", "milestone": "M3", "event": "upgrade_picked", "cd_asset": null, "cd_container": null, "codec": null, "loop": false, "volume": 1.0},
+    {"id": "player_died", "milestone": "M3", "event": "player_died", "cd_asset": null, "cd_container": null, "codec": null, "loop": false, "volume": 1.0},
+    {"id": "new_high_score", "milestone": "M3", "event": "new_high_score", "cd_asset": null, "cd_container": null, "codec": null, "loop": false, "volume": 1.0},
+    {"id": "arena_music", "milestone": "M3", "event": "music", "cd_asset": null, "cd_container": null, "codec": null, "loop": true, "volume": 0.6}
+  ]
+}
